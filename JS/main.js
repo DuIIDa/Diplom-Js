@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
         popupCall.addEventListener('click', (event) => {
             event.preventDefault();
             let target = event.target;
-            console.log('target: ', target);
             if(target.className === 'popup-close'){
                 popupCall.style.display = 'none';
             }else {
@@ -43,4 +42,22 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     popupOne();
 
+    //Кнопка больше
+    const addsentence = () => {
+        const stocks = document.querySelector('#stocks');
+        const product = document.querySelectorAll('.col-xs-12.col-sm-6.col-md-4');
+
+        stocks.addEventListener('click', (event) => {
+            let target = event.target;
+            if(target.classList[1] === 'add-sentence-btn'){
+                target.style.display = 'none';
+                product.forEach(item => {
+                    item.classList.remove('hidden');
+                    item.classList.remove('visible-sm-block');
+                });
+            }
+        });
+    };
+
+    addsentence();
 });
