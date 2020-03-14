@@ -1,25 +1,27 @@
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    //Анимация модалки
+    const animModel = (block, content) => {
+        let count = 100;
+        block.style.display = 'block';
+        content.style.top = '100%';
+
+        let id = setInterval(()=>{
+            count--;
+            content.style.top = count+"%";
+            if(count === 20){
+                clearInterval(id);
+            }
+        }, 5);
+    };
+
+
     //popup--1
     const popupOne = () => {
         const callBtn = document.querySelectorAll('a.call-btn');
         const popupCall = document.querySelector('.popup-call');
         const captureContent = document.querySelectorAll('.popup-content');
-
-        const addPopup = () => {
-            let count = 100;
-            popupCall.style.display = 'block';
-            captureContent[0].style.top = '100%';
-
-            let id = setInterval(()=>{
-                count--;
-                captureContent[0].style.top = count+"%";
-                if(count === 20){
-                    clearInterval(id);
-                }
-            }, 5);
-        };
 
         popupCall.addEventListener('click', (event) => {
             event.preventDefault();
@@ -37,7 +39,9 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         callBtn.forEach(item => {
-            item.addEventListener('click', addPopup);
+            item.addEventListener('click', () => {
+                animModel(popupCall,captureContent[0]);
+            });
         });
     };
     popupOne();
@@ -50,20 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const popupDiscount = document.querySelector('.popup-discount');
         const discountContent = document.querySelectorAll('.popup-content');
 
-        const addPopupTwo = () => {
-            let count = 100;
-            popupDiscount.style.display = 'block';
-            discountContent[1].style.top = '100%';
-
-            let id = setInterval(()=>{
-                count--;
-                discountContent[1].style.top = count+"%";
-                if(count === 20){
-                    clearInterval(id);
-                }
-            }, 5);
-        };
-
         stocks.addEventListener('click', (event) => {
             let target = event.target;
             if(target.classList[1] === 'add-sentence-btn'){
@@ -73,13 +63,14 @@ window.addEventListener('DOMContentLoaded', () => {
                     item.classList.remove('visible-sm-block');
                 });
             } else if(target.classList[0] === 'discount-btn'){
-                addPopupTwo();
+                animModel(popupDiscount, discountContent[1]);
             }
         });
 
         popupDiscount.addEventListener('click', (event) => {
             event.preventDefault();
             let target = event.target;
+            console.log('target: ', target);
 
             if(target.className === 'popup-close'){
                 popupDiscount.style.display = 'none';
@@ -97,9 +88,31 @@ window.addEventListener('DOMContentLoaded', () => {
     addsentence();
 
     //Скидка
-
     const  discount = () => {
-        
+        const checkBtn = document.querySelector('.check-btn');
+        const popupCheck = document.querySelector('.popup-check');
+        const discountContent = document.querySelectorAll('.popup-content');
+
+        checkBtn.addEventListener('click', () => {
+            animModel(popupCheck, discountContent[2])
+        });
+
+        popupCheck.addEventListener('click', (event) => {
+            event.preventDefault();
+            let target = event.target;
+            console.log('target: ', target);
+
+            if(target.className === 'popup-close'){
+                popupCheck.style.display = 'none';
+            }else {
+                target = target.closest('.popup-content');
+
+                if(!target){
+                    popupCheck.style.display = 'none';
+                }
+
+            }
+        });
     };
 
     discount();
