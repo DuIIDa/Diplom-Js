@@ -240,10 +240,12 @@ window.addEventListener('DOMContentLoaded', () => {
                     parametersСounting.drainageCount = 0.5;
                 } 
             }else if(target.id ==='myonoffswitch-two'){
-                if(target.checded === true){
+                if(target.checked === true){
                     parametersСounting.bottom = 2000;
+                    console.log('parametersСounting.bottom: ', parametersСounting.bottom);
                 }else{
                     parametersСounting.bottom = 1000;
+                    console.log(' parametersСounting.bottom: ',  parametersСounting.bottom);
                 }
             }
             calcResult.value = sumResult();
