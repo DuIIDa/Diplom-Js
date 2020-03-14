@@ -133,7 +133,7 @@
                     <div class="panel panel-default panel-one wow fadeInLeft">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" 
                                    aria-expanded="true" aria-controls="collapseOne">
                                     <span class="link-text">1. Тип септика</span>
                                 </a>
@@ -154,7 +154,7 @@
                                 <img class="type-septic" src="img/constructor/type-septic-two.png" alt="septic">
                                 <p>камерный</p>
                                 <a class="button construct-btn collapsed" data-toggle="collapse"
-                                   data-parent="#accordion" href="#collapseTwo"><span>Следующий шаг</span></a>
+                                   data-parent="#accordion" ><span>Следующий шаг</span></a>
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                         <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    aria-expanded="false" aria-controls="collapseTwo">
                                     <span class="link-text">2. Диаметр и количество колец</span>
                                 </a>
                             </h4>
@@ -175,38 +175,39 @@
                                 <div class="title-text">первый колодец (приемный)</div>
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id = "diam-one">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id = "count-one">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
                                     </select>
                                 </div>
-
-                                <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
-                                    <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
-                                    </select>
+                                <div id = "drainage">
+                                    <div class="title-text">второй колодец (дренажный)</div>
+                                    <div class="select-box">
+                                        <p><strong>Диаметр</strong></p>
+                                        <select class="form-control expand" id = "diam-two">
+                                            <option>1.4 метра</option>
+                                            <option>2 метра</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-box">
+                                        <p><strong>Количество колец</strong></p>
+                                        <select class="form-control expand" id = "count-two">
+                                            <option>1 штука</option>
+                                            <option>2 штуки</option>
+                                            <option>3 штуки</option>
+                                        </select>
                                 </div>
-                                <div class="select-box">
-                                    <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
-                                    </select>
-                                </div>
+                            </div>
                                 <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseThree"><span>Следующий шаг</span></a>
+                                   ><span>Следующий шаг</span></a>
                             </div>
                         </div>
                     </div>
@@ -215,7 +216,7 @@
                         <div class="panel-heading" role="tab" id="headingThree">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    aria-expanded="false" aria-controls="collapseThree">
                                     <span class="link-text">3. Наличие днища колодца</span>
                                 </a>
                             </h4>
@@ -223,7 +224,6 @@
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingThree">
                             <div class="panel-body">
-                                </p>
 
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch-two" class="onoffswitch-checkbox"
@@ -235,7 +235,7 @@
                                 </div>
                                 <img class="bottom-septic-img" src="img/constructor/bottom-septic.png" alt="bs">
                                 <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><span>Следующий шаг</span></a>
+                                    aria-expanded="false" aria-controls="collapseFour"><span>Следующий шаг</span></a>
                             </div>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                         <div class="panel-heading" role="tab" id="headingFour">
                             <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    aria-expanded="false" aria-controls="collapseFour">
                                     <span class="link-text">4. Расстояние от септика до дома</span>
                                 </a>
                             </h4>
@@ -369,7 +369,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a id="One" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a id="One-two" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
@@ -389,7 +389,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
-                        <a id="Two" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a id="Two-two" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
@@ -407,7 +407,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree-two">
                     <h4 class="panel-title">
-                        <a id="Three" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a id="Three-two" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseThree-two" aria-expanded="false" aria-controls="collapseThree-two">
                             Погибают ли бактерии в холодный период при долгом простое системы?
                         </a>
