@@ -17,8 +17,9 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     //Закрытие модалок
-    const closeModel = (block, target) => {
+    const closeModel = (block, target, event) => {
         if(target.className === 'popup-close'){
+            event.preventDefault();
             block.style.display = 'none';
         }else {
             target = target.closest('.popup-content');
@@ -37,13 +38,13 @@ window.addEventListener('DOMContentLoaded', () => {
         const captureContent = document.querySelectorAll('.popup-content');
 
         popupCall.addEventListener('click', (event) => {
-            event.preventDefault();
             let target = event.target;
-            closeModel(popupCall,target);
+            closeModel(popupCall,target, event);
         });
 
         callBtn.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (event) => {
+                event.preventDefault();
                 animModel(popupCall,captureContent[0]);
             });
         });
@@ -339,4 +340,64 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     accordionCalc();
+
+    const sendForm = () => {
+        const form1 = new Validator({
+            selector: '#form1',
+            pattern: {
+                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
+                name: /^[а-яА-ЯёЁ]+$/
+            },
+            method: {
+            'phone_1': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],
+            'name_1': [
+                ['notEmpty'],
+                ['pattern', 'name']
+            ]
+        }
+        });
+
+        const form3 = new Validator({
+            selector: '#form3',
+            pattern: {
+                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
+            },
+            method: {
+            'phone_3': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],
+        }
+        });
+
+        
+        const form2 = new Validator({
+            selector: '#form2',
+            pattern: {
+                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
+                name: /^[а-яА-ЯёЁ]+$/,
+            },
+            method: {
+            'phone_2': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],            
+            'name_2': [
+                ['notEmpty'],
+                ['pattern', 'name']
+            ]
+        }
+        });
+    
+       
+    
+        form1.init();
+        form2.init();
+        form3.init();
+    };
+
+    sendForm();
 });
