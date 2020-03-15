@@ -166,7 +166,19 @@ window.addEventListener('DOMContentLoaded', () => {
         const collapseFour = document.querySelector('#collapseFour');
 
         const myonoffswitch = document.querySelector('#myonoffswitch');//.checked
+        const distance = document.getElementById('distance');
         const calcResult = document.querySelector('#calc-result');
+
+        const parametersFormSubmission = {
+            type: 'Однокамерны',
+            fosterDiameter: '1.4 метра',
+            fosterCount: '1 штука',
+            drainageDiameter: '',
+            drainageCount: '',
+            bottom: 'Есть',
+            distance: '0 Метров',
+            rez: '',
+        };
 
         
         const parametersСounting = {
@@ -208,46 +220,59 @@ window.addEventListener('DOMContentLoaded', () => {
                     parametersСounting.drainageDiameter = 0;
                     parametersСounting.drainageCount = 0;
                     parametersСounting.type = 10000;
+                    parametersFormSubmission.type = 'Однокамерный';
                     drainage();
                 }else{
                     parametersСounting.drainageDiameter = 0;
                     parametersСounting.drainageCount = 0;
                     parametersСounting.type = 15000;
+                    parametersFormSubmission.type = 'Двухкамерный';
                     drainage();
                 }
             }else if(target.className === 'form-control expand'){
                 if(target.id === 'diam-one' && target.value === '1.4 метра'){
                     parametersСounting.fosterDiameter = 0;
+                    parametersFormSubmission.fosterDiameter = target.value;
                 }else if(target.id === 'diam-one' && target.value === '2 метра'){
                     parametersСounting.fosterDiameter = 0.2;
+                    parametersFormSubmission.fosterDiameter = target.value;
                 }else if(target.id === 'count-one' && target.value === '1 штука'){
                     parametersСounting.fosterCount = 0;
+                    parametersFormSubmission.fosterCount = target.value;
                 }else if(target.id === 'count-one' && target.value === '2 штуки'){
                     parametersСounting.fosterCount = 0.3;
+                    parametersFormSubmission.fosterCount = target.value;
                 }else if(target.id === 'count-one' && target.value === '3 штуки'){
                     parametersСounting.fosterCount = 0.5;
+                    parametersFormSubmission.fosterCount = target.value;
                 }
 
                 if(target.id === 'diam-two' && target.value === '1.4 метра'){
                     parametersСounting. drainageDiameter = 0;
+                    parametersFormSubmission.drainageDiameter = target.value;
                 }else if(target.id === 'diam-two' && target.value === '2 метра'){
                     parametersСounting. drainageDiameter = 0.2;
+                    parametersFormSubmission.drainageDiameter = target.value;
                 }else if(target.id === 'count-two' && target.value === '1 штука'){
                     parametersСounting.drainageCount = 0;
+                    parametersFormSubmission.drainageCount = target.value;
                 }else if(target.id === 'count-two' && target.value === '2 штуки'){
                     parametersСounting.drainageCount = 0.3;
+                    parametersFormSubmission.drainageCount = target.value;
                 }else if(target.id === 'count-two' && target.value === '3 штуки'){
                     parametersСounting.drainageCount = 0.5;
+                    parametersFormSubmission.drainageCount = target.value;
                 } 
             }else if(target.id ==='myonoffswitch-two'){
                 if(target.checked === true){
                     parametersСounting.bottom = 2000;
-                    console.log('parametersСounting.bottom: ', parametersСounting.bottom);
+                    parametersFormSubmission.bottom = 'Есть';
                 }else{
                     parametersСounting.bottom = 1000;
-                    console.log(' parametersСounting.bottom: ',  parametersСounting.bottom);
+                    parametersFormSubmission.bottom = 'Нет';
                 }
             }
+            
             calcResult.value = sumResult();
         });
 
@@ -299,6 +324,9 @@ window.addEventListener('DOMContentLoaded', () => {
                         collapseThree.classList.remove('in');
                         collapseFour.classList.add('in');
                     }else if(target.id === 'collapseFour'){
+                        console.log('distance.value: ', distance.value);
+                        parametersFormSubmission.distance = distance.value;
+                        parametersFormSubmission.rez = calcResult.value;
                         animModel(popupDiscount, discountContent[1]);
                     }          
                 }
