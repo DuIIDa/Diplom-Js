@@ -17,9 +17,15 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
+    <style>
+        input:required:valid {
+            outline: 0;
+            box-shadow: inset 0 3px 3px rgb(71, 211, 55), 0 0 15px rgba(52, 201, 36, .6);
+        }
+    </style>
+
     <title>Септик-погреб</title>
-
-
+    
 </head>
 
 <body>
@@ -82,8 +88,8 @@
                     <p>Не знаете как построить канализацию? <br> Закажите <span>бесплатную</span> консультацию <br> мы
                         подскажем и подготовим проект и смету</p>
                     <label for="phone_3">Ваш телефон для получения скидки</label>
-                    <input class="phone-user" type="text" id="phone_3" name="user_phone" placeholder="+7(___)___-__-__"
-                           required>
+                    <input class="phone-user" id="phone_3" name="user_phone" placeholder="+7(___)___-__-__"
+                    required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                     <button class="button main-form-btn" name="submit" type="submit">Получить консультацию</button>
                     <p class="small">Заполнения заявки Вас ни к чему не обязывает! <br> Вы сможете отказаться в любой
                         момент</p>
@@ -108,10 +114,10 @@
                  data-wow-delay="0.2s">
                 <form class="capture-form text-center forms">
                     <label for="name_2">Как к вам обращаться</label>
-                    <input class="name-user" type="text" id="name_2" name="user_name" placeholder="Ваше имя" required>
+                    <input class="name-user" id="name_2" name="user_name" placeholder="Ваше имя" required pattern = "^[а-яА-ЯёЁ ?]+$">
                     <label for="phone_2">Ваш телефон для получения скидки</label>
-                    <input class="phone-user" type="text" id="phone_2" name="user_phone" placeholder="+7(___)___-__-__"
-                           required>
+                    <input class="phone-user" id="phone_2" name="user_phone" placeholder="+7(___)___-__-__"
+                    required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                     <button class="button capture-form-btn" name="submit" type="submit">Получить расчет и скидку
                     </button>
                     <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
@@ -440,7 +446,7 @@
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
                 <form class="director-form">
-                    <input class="name-user" id = "question" type="text" name="user_quest" placeholder="Введите свой вопрос" required>
+                    <input class="name-user" id = "question"  name="user_quest" placeholder="Введите свой вопрос" required pattern="^[а-яА-ЯёЁ ?]+$">
                     <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
                         консультацию
                     </button>
@@ -487,10 +493,10 @@
             <form class="capture-form text-center forms">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_1">Как к вам обращаться</label>
-                <input class="name-user" type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" id="name_1" name="user_name" placeholder="Ваше имя" required pattern = "^[а-яА-ЯёЁ ?]+$">
                 <label for="phone_1">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_1" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
+                <input class="phone-user" id="phone_1" name="user_phone" placeholder="+7(___)___-__-__"
+                required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                 <button class="button capture-form-btn" name="submit" type="submit">Получить расчет и скидку</button>
                 <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                     грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
@@ -508,10 +514,10 @@
             <form class="capture-form text-center form-parametrs" id = "parametrs_1">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_11">Как к вам обращаться</label>
-                <input class="name-user" type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" id="name_11" name="user_name" placeholder="Ваше имя" required pattern = "^[а-яА-ЯёЁ ?]+$">
                 <label for="phone_11">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_11" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
+                <input class="phone-user" id="phone_11" name="user_phone" placeholder="+7(___)___-__-__"
+                required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                 <button class="button capture-form-btn" name="submit" type="submit">Заказать со скидкой</button>
                 <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                     грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
@@ -529,10 +535,10 @@
             <form class="capture-form text-center forms">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_12">Как к вам обращаться</label>
-                <input  class="name-user" type="text" id="name_12" name="user_name" placeholder="Ваше имя" required>
+                <input  class="name-user" id="name_12" name="user_name" placeholder="Ваше имя" required pattern = "^[а-яА-ЯёЁ ?]+$">
                 <label for="phone_12">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_12" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
+                <input class="phone-user" id="phone_12" name="user_phone" placeholder="+7(___)___-__-__"
+                required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                 <button class="button capture-form-btn" name="submit" type="submit">Получить чек-лист и скидку</button>
                 <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                     грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
@@ -550,10 +556,10 @@
             <form class="capture-form text-center form-parametrs" id = "parametrs_2">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_13">Как к вам обращаться</label>
-                <input class="name-user" type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" id="name_13" name="user_name" placeholder="Ваше имя" required pattern = "^[а-яА-ЯёЁ ?]+$">
                 <label for="phone_13">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_13" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
+                <input class="phone-user" id="phone_13" name="user_phone" placeholder="+7(___)___-__-__"
+                required pattern = "^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$">
                 <button class="button capture-form-btn" name="submit" type="submit">Получить консультацию</button>
                 <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                     грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
@@ -564,7 +570,7 @@
     </div>
 </div>
 
-<script src="JS/main.js"></script>
+<script src="./dist/main.js"></script>
 
 </body>
 </html>
