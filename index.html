@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12">
-                <form class="main-form text-center wow fadeInRight" id="form3">
+                <form class="main-form text-center wow fadeInRight forms">
                     <h4>Заказать консультацию!</h4>
                     <p>Не знаете как построить канализацию? <br> Закажите <span>бесплатную</span> консультацию <br> мы
                         подскажем и подготовим проект и смету</p>
@@ -106,9 +106,9 @@
             </div>
             <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 wow fadeInRight"
                  data-wow-delay="0.2s">
-                <form class="capture-form text-center" id="form2">
+                <form class="capture-form text-center forms">
                     <label for="name_2">Как к вам обращаться</label>
-                    <input type="text" id="name_2" name="user_name" placeholder="Ваше имя" required>
+                    <input class="name-user" type="text" id="name_2" name="user_name" placeholder="Ваше имя" required>
                     <label for="phone_2">Ваш телефон для получения скидки</label>
                     <input class="phone-user" type="text" id="phone_2" name="user_phone" placeholder="+7(___)___-__-__"
                            required>
@@ -254,7 +254,7 @@
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
                                 <input type="number" id ="distance">
-                                <button class="button construct-btn call-btn">Получить расчет и скидку</button>
+                                <button class="button construct-btn call-btn sentence-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
                     </div>
@@ -440,7 +440,7 @@
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
                 <form class="director-form">
-                    <input type="text" name="user_quest" placeholder="Введите свой вопрос" required>
+                    <input class="name-user" id = "question" type="text" name="user_quest" placeholder="Введите свой вопрос" required>
                     <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
                         консультацию
                     </button>
@@ -484,10 +484,10 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center" id="form1">
+            <form class="capture-form text-center forms">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_1">Как к вам обращаться</label>
-                <input type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_1">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_1" name="user_phone" placeholder="+7(___)___-__-__"
                        required>
@@ -505,10 +505,10 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center form-parametrs" id = "parametrs_1">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_11">Как к вам обращаться</label>
-                <input type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_11">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_11" name="user_phone" placeholder="+7(___)___-__-__"
                        required>
@@ -526,10 +526,10 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center forms">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_12">Как к вам обращаться</label>
-                <input type="text" id="name_12" name="user_name" placeholder="Ваше имя" required>
+                <input  class="name-user" type="text" id="name_12" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_12">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_12" name="user_phone" placeholder="+7(___)___-__-__"
                        required>
@@ -547,10 +547,10 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center form-parametrs" id = "parametrs_2">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_13">Как к вам обращаться</label>
-                <input type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
+                <input class="name-user" type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_13">Ваш телефон для получения скидки</label>
                 <input class="phone-user" type="text" id="phone_13" name="user_phone" placeholder="+7(___)___-__-__"
                        required>
@@ -564,7 +564,6 @@
     </div>
 </div>
 
-<script src="JS/validator.js"></script>
 <script src="JS/main.js"></script>
 
 </body>

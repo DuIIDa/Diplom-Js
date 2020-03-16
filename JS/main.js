@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
+    let parametersFormSubmission = {};
+    
     //Анимация модалки
     const animModel = (block, content) => {
         let count = 100;
@@ -57,6 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const product = document.querySelectorAll('.col-xs-12.col-sm-6.col-md-4');
 
         const popupDiscount = document.querySelector('.popup-discount');
+        const formParametrs = document.querySelectorAll('.form-parametrs');
         const discountContent = document.querySelectorAll('.popup-content');
 
         stocks.addEventListener('click', (event) => {
@@ -68,14 +71,15 @@ window.addEventListener('DOMContentLoaded', () => {
                     item.classList.remove('visible-sm-block');
                 });
             } else if(target.classList[0] === 'discount-btn'){
+                event.preventDefault();
+                formParametrs[0].id = '';
                 animModel(popupDiscount, discountContent[1]);
             }
         });
 
         popupDiscount.addEventListener('click', (event) => {
-            event.preventDefault();
             let target = event.target;
-            closeModel(popupDiscount,target);
+            closeModel(popupDiscount,target,event);
         });
     };
 
@@ -88,14 +92,13 @@ window.addEventListener('DOMContentLoaded', () => {
         const discountContent = document.querySelectorAll('.popup-content');
 
         checkBtn.addEventListener('click', () => {
+            event.preventDefault();
             animModel(popupCheck, discountContent[2]);
         });
 
         popupCheck.addEventListener('click', (event) => {
-            event.preventDefault();
             let target = event.target;
-
-            closeModel(popupCheck,target);
+            closeModel(popupCheck,target,event);
         });
     };
 
@@ -113,9 +116,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         
         popupConsultation.addEventListener('click', (event) => {
-            event.preventDefault();
             let target = event.target;
-            closeModel(popupConsultation,target);
+            closeModel(popupConsultation,target,event);
         });
 
     };
@@ -158,7 +160,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const accordionCalc = () => {
         const panelGroup = document.querySelector('.panel-group');
         const constructBtn = document.querySelectorAll('.construct-btn');
+
         const popupDiscount = document.querySelector('.popup-discount');
+        const formParametrs = document.querySelectorAll('.form-parametrs');
         const discountContent = document.querySelectorAll('.popup-content');
 
         const collapseOne = document.querySelector('#collapseOne');
@@ -169,18 +173,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const myonoffswitch = document.querySelector('#myonoffswitch');//.checked
         const distance = document.getElementById('distance');
         const calcResult = document.querySelector('#calc-result');
-
-        const parametersFormSubmission = {
-            type: 'Однокамерны',
-            fosterDiameter: '1.4 метра',
-            fosterCount: '1 штука',
-            drainageDiameter: '',
-            drainageCount: '',
-            bottom: 'Есть',
-            distance: '0 Метров',
-            rez: '',
-        };
-
         
         const parametersСounting = {
             type: 10000,
@@ -306,7 +298,7 @@ window.addEventListener('DOMContentLoaded', () => {
             
         });
 
-        constructBtn.forEach((item, i) => {
+        constructBtn.forEach((item) => {
            
             item.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -325,9 +317,9 @@ window.addEventListener('DOMContentLoaded', () => {
                         collapseThree.classList.remove('in');
                         collapseFour.classList.add('in');
                     }else if(target.id === 'collapseFour'){
-                        console.log('distance.value: ', distance.value);
                         parametersFormSubmission.distance = distance.value;
                         parametersFormSubmission.rez = calcResult.value;
+                        formParametrs[0].id = 'parametrs_1';
                         animModel(popupDiscount, discountContent[1]);
                     }          
                 }
@@ -337,66 +329,168 @@ window.addEventListener('DOMContentLoaded', () => {
 
         calcResult.value = sumResult();
         drainage();
+
+        parametersFormSubmission = {
+            type: 'Однокамерный',
+            fosterDiameter: '1.4 метра',
+            fosterCount: '1 штука',
+            drainageDiameter: '',
+            drainageCount: '',
+            bottom: 'Есть',
+            distance: '0 Метров',
+            rez: calcResult.value,
+        };
+
     };
 
     accordionCalc();
 
+    //Оправка форм + валидация
     const sendForm = () => {
-        const form1 = new Validator({
-            selector: '#form1',
-            pattern: {
-                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
-                name: /^[а-яА-ЯёЁ]+$/
-            },
-            method: {
-            'phone_1': [
-                ['notEmpty'],
-                ['pattern', 'phone']
-            ],
-            'name_1': [
-                ['notEmpty'],
-                ['pattern', 'name']
-            ]
-        }
-        });
+        const errorMessage = 'Что-то пошло не так...';
+        const successMessage = 'Спасибо! Мы скоро с вами свяжемся';
 
-        const form3 = new Validator({
-            selector: '#form3',
-            pattern: {
-                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
-            },
-            method: {
-            'phone_3': [
-                ['notEmpty'],
-                ['pattern', 'phone']
-            ],
-        }
-        });
-
+        const formParametrs = document.querySelectorAll('.form-parametrs');
+        const forms = document.querySelectorAll('.forms');
         
-        const form2 = new Validator({
-            selector: '#form2',
-            pattern: {
-                phone: /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/,
-                name: /^[а-яА-ЯёЁ]+$/,
-            },
-            method: {
-            'phone_2': [
-                ['notEmpty'],
-                ['pattern', 'phone']
-            ],            
-            'name_2': [
-                ['notEmpty'],
-                ['pattern', 'name']
-            ]
-        }
+        let question = document.getElementById('question');
+        let errorSize = 0;
+
+        //Валидатор
+        const valid = () => {
+            const validForms = document.querySelectorAll('form');
+    
+            const applyStyle = () => {
+                const style = document.createElement('style');
+                style.textContent =`
+                    input.success {
+                        outline: 0;
+                        box-shadow: inset 0 3px 3px rgba(52,201,36), 0 0 15px rgba(52, 201, 36, .6);
+                    }
+                    input.error {
+                        outline: 0;
+                        box-shadow: inset 0 3px 3px rgba(255,0,0), 0 0 15px rgba(255, 0, 0, .6);
+                    }
+                `;
+                document.head.appendChild(style);
+            };
+
+            const validator = (target, reg, button) => {
+
+                if(reg.test(target.value)){
+                    target.classList.remove('error');
+                    target.classList.add('success');
+                    button.disabled = false;
+                    errorSize--;
+                }else{
+                    target.classList.remove('success');
+                    target.classList.add('error');
+                    button.disabled = true;
+                    errorSize++;
+                }
+            };
+            
+            validForms.forEach((item) => {
+                item.addEventListener('change', (event) => {
+                    let target = event.target;
+                    let targetForm = event.target;
+
+                    targetForm = targetForm.closest('form');
+                    
+                    let button = [...targetForm.elements].filter((item) => {
+                        return item.tagName.toLowerCase() === 'button' && item.classList[0] === 'button';
+                    });
+
+                    if(target.classList[0] === 'name-user'){
+                        validator(target, /^[а-яА-ЯёЁ ?]+$/, button[0]);
+                    }else if(target.classList[0] === 'phone-user'){
+                        validator(target, /^\+375( )?(( )?\d){9}$|^\+?[78]([-()]*\d){10}$/, button[0]);
+                    }
+        
+                });
+            });
+
+            applyStyle();
+        };
+        valid();
+        
+        //Отправка Форм
+        const postData = (body) => {
+            return fetch('./server.php',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+        };
+
+        const messagePost = (form) => {
+            let loadMessage;
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                if(errorSize > 0){
+                    return;
+                }else{
+                    let elementsForm = [...form.elements].filter((item) => {
+                        return item.tagName.toLowerCase() !== 'button' &&
+                        item.type !== 'button';
+                    });
+    
+                    if(loadMessage){
+                        form.removeChild(loadMessage);
+                    }else{
+                        loadMessage = document.createElement('div');
+                        loadMessage.style.cssText = 'font-size: 2rem';
+                    }
+    
+                    form.appendChild(loadMessage);
+                    loadMessage.innerHTML = `<div>Загрузка...</div>`;
+                    
+                    let body = {};
+    
+                    if(form.id === 'parametrs_1'){
+                        body = {addInfo: parametersFormSubmission};
+                    }else if(form.id === 'parametrs_2'){
+                        body = {addInfo: question.value};
+                    }
+    
+                    const formData = new FormData(form);
+                    formData.forEach( (value, key) => {
+                        body[key] = value;
+                    });
+                    
+                    postData(body)
+                        .then((response) => {
+                            if(response.status !== 200){
+                                throw new Error('Status network not 200');
+                            }
+                            loadMessage.textContent = successMessage;
+                        })               
+                        .catch((error) => {
+                            loadMessage.textContent = errorMessage;
+                            console.error(error);
+                        });
+    
+                    elementsForm.forEach(elem => {
+                        elem.classList.remove('error');
+                        elem.classList.remove('success');
+                        elem.value = '';
+                    });
+                    question.value = '';
+                    question.classList.remove('success');
+                }
+            });
+        };
+        
+        forms.forEach(item => {
+            messagePost(item);
         });
-    
-       
-    
-        form1.init();
-        form2.init();
-        form3.init();
+
+        formParametrs.forEach((item) => {
+            messagePost(item);
+        });
     };
 
     sendForm();
