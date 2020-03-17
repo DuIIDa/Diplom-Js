@@ -69,6 +69,10 @@ const sendForm = () => {
 
                 setTimeout(() => {
                     form.removeChild(loadMessage);
+                    let closeForm = form.closest('.popup');
+                    if(closeForm){
+                        closeForm.style.display = 'none';
+                    }
                 }, 5000);
 
                 elementsForm.forEach(elem => {
