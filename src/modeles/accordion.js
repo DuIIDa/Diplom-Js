@@ -6,25 +6,30 @@ const accordion = () => {
     const collapseTwoTwo = document.querySelector('#collapseTwo-two');
     const collapseThreeTwo = document.querySelector('#collapseThree-two');
 
+    const animAccordionTwo = (hideOne, hideTwo, active) => {
+        hideOne.style.maxHeight = null;
+        hideTwo.style.maxHeight = null;
+        if (active.style.maxHeight){
+            active.style.maxHeight = null;
+        } else {
+            active.style.maxHeight = active.scrollHeight + "px";
+        }
+    };
+
     accordionTwo.addEventListener('click', (event) => {
         event.preventDefault();
         let target = event.target;
 
-        if(target.tagName === 'A'){
-            if(target.id === 'One-two'){
-                collapseTwoTwo.classList.remove('in');
-                collapseThreeTwo.classList.remove('in');
-                collapseOneTwo.classList.add('in');
-            }else if(target.id === 'Two-two'){
-                collapseOneTwo.classList.remove('in');
-                collapseThreeTwo.classList.remove('in');
-                collapseTwoTwo.classList.add('in');
-            }else if(target.id === 'Three-two'){
-                collapseOneTwo.classList.remove('in');
-                collapseTwoTwo.classList.remove('in');
-                collapseThreeTwo.classList.add('in');
-            }
+        target = target.closest('div');
+
+        if(target.id === 'headingOne-two'){
+            animAccordionTwo(collapseTwoTwo, collapseThreeTwo, collapseOneTwo);   
+        }else if(target.id === 'headingTwo-two'){
+            animAccordionTwo(collapseOneTwo, collapseThreeTwo, collapseTwoTwo);
+        }else if(target.id === 'headingThree-two'){
+            animAccordionTwo( collapseOneTwo, collapseTwoTwo, collapseThreeTwo);
         }
+        
     });
 };
 

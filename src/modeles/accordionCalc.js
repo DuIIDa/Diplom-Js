@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 import parametersFormSubmission from './global';
 import animModel from './animModel';
@@ -57,7 +57,7 @@ const accordionCalc = () => {
         let target = event.target;
         if(target.id === 'myonoffswitch'){
             if(target.checked === true){
-                parametersFormSubmission.drainageDiameter = '1111';
+                parametersFormSubmission.drainageDiameter = '0';
                 parametersFormSubmission.drainageCount = '';
                 parametersСounting.drainageDiameter = 0;
                 parametersСounting.drainageCount = 0;
@@ -120,31 +120,31 @@ const accordionCalc = () => {
         calcResult.value = sumResult();
     });
 
+    const animAccordionTwo = (hideOne, hideTwo, hideThree,active) => {
+        hideOne.style.maxHeight = null;
+        hideTwo.style.maxHeight = null;
+        hideThree.style.maxHeight = null;
+        if (active.style.maxHeight){
+            active.style.maxHeight = null;
+        } else {
+            active.style.maxHeight = active.scrollHeight + "px";
+        }
+    };
+
     panelGroup.addEventListener('click', (event) => {
         let target = event.target;
 
         target = target.closest('div');
 
         if(target.id === 'headingOne'){
-            collapseOne.classList.add('in');
-            collapseTwo.classList.remove('in');
-            collapseThree.classList.remove('in');
-            collapseFour.classList.remove('in');   
+            animAccordionTwo(collapseTwo, collapseThree, collapseFour, collapseOne);
         }else if(target.id === 'headingTwo'){
-            collapseOne.classList.remove('in');
-            collapseTwo.classList.add('in');
-            collapseThree.classList.remove('in');
-            collapseFour.classList.remove('in');  
+            animAccordionTwo( collapseOne, collapseThree, collapseFour, collapseTwo);  
         }else if(target.id === 'headingThree'){
-            collapseOne.classList.remove('in');
-            collapseTwo.classList.remove('in');
-            collapseThree.classList.add('in');
-            collapseFour.classList.remove('in');  
+            animAccordionTwo( collapseOne, collapseTwo, collapseFour, collapseThree);  
         }else if(target.id === 'headingFour'){
-            collapseOne.classList.remove('in');
-            collapseTwo.classList.remove('in');
-            collapseThree.classList.remove('in');
-            collapseFour.classList.add('in');  
+            collapseFour.style.display = 'block';
+            animAccordionTwo( collapseOne, collapseTwo, collapseThree, collapseFour);  
         }
         
     });

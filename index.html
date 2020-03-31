@@ -18,6 +18,13 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
+        .panelAnim {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
         input:required:valid {
             outline: 0;
             box-shadow: inset 0 3px 3px rgb(71, 211, 55), 0 0 15px rgba(52, 201, 36, .6);
@@ -145,8 +152,8 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                             aria-labelledby="headingOne">
+                        <div id="collapseOne" class="panel-collapse collapse panelAnim" role="tabpanel"
+                             aria-labelledby="headingOne" style="max-height: 196px;">
                             <div class="panel-body">
                                 <img class="type-septic" src="img/constructor/type-septic.png" alt="septic">
                                 <div class="onoffswitch">
@@ -174,7 +181,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseTwo" class="panel-collapse collapse panelAnim" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
 
@@ -227,7 +234,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseThree" class="panel-collapse collapse panelAnim" role="tabpanel"
                              aria-labelledby="headingThree">
                             <div class="panel-body">
 
@@ -255,10 +262,10 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-                             aria-labelledby="headingFour">
+                        <div id="collapseFour" class="panel-collapse collapse panelAnim" role="tabpanel"
+                             aria-labelledby="headingFour" style = "display: none;">
                             <div class="panel-body">
-                                <p>Введите расстояние до дома</p>
+                                <p>Введите расстояние до дома(М)</p>
                                 <input type="number" id ="distance">
                                 <button class="button construct-btn call-btn sentence-btn">Получить расчет и скидку</button>
                             </div>
@@ -375,14 +382,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a id="One-two" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne-two" class="panel-collapse collapse in" role="tabpanel"
-                     aria-labelledby="headingOne">
+                <div id="collapseOne-two" class="panel-collapse collapse panelAnim" role="tabpanel"
+                     aria-labelledby="headingOne" style="max-height: 136px;">
                     <div class="panel-body">
                         Вероятность того, что вода в подводящем трубопроводе замерзнет, отсутствует, потому что она
                         находится в трубе лишь на протяжении небольшого промежутка времени, а все остальное время труба
@@ -395,14 +402,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
-                        <a id="Two-two" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo-two" class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseTwo-two" class="panel-collapse collapse panelAnim" role="tabpanel"
                      aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Нет, не может. Армированное изделие и марка бетона М-350, позволяют выдерживать значительные
@@ -413,13 +420,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree-two">
                     <h4 class="panel-title">
-                        <a id="Three-two" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseThree-two" aria-expanded="false" aria-controls="collapseThree-two">
                             Погибают ли бактерии в холодный период при долгом простое системы?
                         </a>
                     </h4>
                 </div>
-                <div id="collapseThree-two" class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseThree-two" class="panel-collapse collapse panelAnim" role="tabpanel"
                      aria-labelledby="headingThree-two">
                     <div class="panel-body">
                         Да. Иногда зимний монтаж предпочтительней. Большегрузная техника по мороженому грунту не
