@@ -120,7 +120,7 @@ const accordionCalc = () => {
         calcResult.value = sumResult();
     });
 
-    const animAccordionTwo = (hideOne, hideTwo, hideThree,active) => {
+    const animAccordionTwo = (hideOne, hideTwo, hideThree, active) => {
         hideOne.style.maxHeight = null;
         hideTwo.style.maxHeight = null;
         hideThree.style.maxHeight = null;
@@ -159,14 +159,12 @@ const accordionCalc = () => {
 
             if(target){
                 if(target.id === 'collapseOne'){
-                    collapseOne.classList.remove('in');
-                    collapseTwo.classList.add('in');
+                    animAccordionTwo(collapseOne, collapseThree, collapseFour, collapseTwo);
                 }else if(target.id === 'collapseTwo'){
-                    collapseTwo.classList.remove('in');
-                    collapseThree.classList.add('in');
+                    animAccordionTwo( collapseOne, collapseTwo, collapseFour, collapseThree);
                 }else if(target.id === 'collapseThree'){
-                    collapseThree.classList.remove('in');
-                    collapseFour.classList.add('in');
+                    collapseFour.style.display = 'block';
+                    animAccordionTwo( collapseOne, collapseTwo, collapseThree, collapseFour);  
                 }else if(target.id === 'collapseFour'){
                     parametersFormSubmission.distance = distance.value;
                     parametersFormSubmission.rez = calcResult.value;
